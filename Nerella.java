@@ -1,5 +1,4 @@
-public class UseCase1PalindromeCheckerApp {
-
+public class UseCase3PalindromeCheckerApp {
     public static void main(String[] args) {
 
         // Display welcome message
@@ -12,6 +11,7 @@ public class UseCase1PalindromeCheckerApp {
         // Flow continues (next use case or exit)
         System.out.println("Application is ready to proceed...");
 
+        // UC2: Hardcoded Palindrome Check
         String input = "madam";
 
         System.out.println("Input text: " + input);
@@ -24,6 +24,8 @@ public class UseCase1PalindromeCheckerApp {
                 break;
             }
         }
+
+        System.out.println("Is it a Palindrome? : " + isPalindrome);
 
         // UC3: Palindrome Check Using String Reverse
         String reversed = "";
