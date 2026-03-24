@@ -1,4 +1,6 @@
-public class UseCase4PalindromeCheckerApp {
+import java.util.Stack;
+
+public class UseCase5PalindromeCheckerApp {
     public static void main(String[] args) {
 
         // Display welcome message
@@ -42,19 +44,13 @@ public class UseCase4PalindromeCheckerApp {
         // UC4: Character Array Based Palindrome Check
         String input2 = "radar";
 
-        // Convert the string into a character array
         char[] chars = input2.toCharArray();
 
-        // Initialize pointer at the beginning
         int start = 0;
-
-        // Initialize pointer at the end
         int end = chars.length - 1;
 
-        // Assume palindrome initially
         boolean isCharPalindrome = true;
 
-        // Continue comparison until pointers cross
         while (start < end) {
             if (chars[start] != chars[end]) {
                 isCharPalindrome = false;
@@ -66,5 +62,30 @@ public class UseCase4PalindromeCheckerApp {
 
         System.out.println("Input : " + input2);
         System.out.println("Is Palindrome? : " + isCharPalindrome);
+
+        // UC5: Stack-Based Palindrome Checker
+        String input3 = "noon";
+
+        // Create a Stack to store characters
+        Stack<Character> stack = new Stack<>();
+
+        // Push each character of the string into the stack
+        for (char c : input3.toCharArray()) {
+            stack.push(c);
+        }
+
+        // Assume palindrome initially
+        boolean isStackPalindrome = true;
+
+        // Iterate again through original string and compare with popped characters
+        for (char c : input3.toCharArray()) {
+            if (c != stack.pop()) {
+                isStackPalindrome = false;
+                break;
+            }
+        }
+
+        System.out.println("Input : " + input3);
+        System.out.println("Is Palindrome? : " + isStackPalindrome);
     }
 }
