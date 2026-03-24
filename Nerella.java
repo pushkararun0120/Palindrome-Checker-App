@@ -1,6 +1,8 @@
 import java.util.Stack;
+import java.util.LinkedList;
+import java.util.Queue;
 
-public class UseCase5PalindromeCheckerApp {
+public class UseCase6PalindromeCheckerApp {
     public static void main(String[] args) {
 
         // Display welcome message
@@ -66,18 +68,14 @@ public class UseCase5PalindromeCheckerApp {
         // UC5: Stack-Based Palindrome Checker
         String input3 = "noon";
 
-        // Create a Stack to store characters
         Stack<Character> stack = new Stack<>();
 
-        // Push each character of the string into the stack
         for (char c : input3.toCharArray()) {
             stack.push(c);
         }
 
-        // Assume palindrome initially
         boolean isStackPalindrome = true;
 
-        // Iterate again through original string and compare with popped characters
         for (char c : input3.toCharArray()) {
             if (c != stack.pop()) {
                 isStackPalindrome = false;
@@ -87,5 +85,34 @@ public class UseCase5PalindromeCheckerApp {
 
         System.out.println("Input : " + input3);
         System.out.println("Is Palindrome? : " + isStackPalindrome);
+
+        // UC6: Queue + Stack Based Palindrome Check
+        String input4 = "civic";
+
+        // Create a Queue to store characters in FIFO order
+        Queue<Character> queue = new LinkedList<>();
+
+        // Create a Stack to store characters in LIFO order
+        Stack<Character> stack2 = new Stack<>();
+
+        // Insert each character into both queue and stack
+        for (char c : input4.toCharArray()) {
+            queue.add(c);
+            stack2.push(c);
+        }
+
+        // Flag to track palindrome status
+        boolean isQueueStackPalindrome = true;
+
+        // Compare characters until the queue becomes empty
+        while (!queue.isEmpty()) {
+            if (queue.poll() != stack2.pop()) {
+                isQueueStackPalindrome = false;
+                break;
+            }
+        }
+
+        System.out.println("Input : " + input4);
+        System.out.println("Is Palindrome? : " + isQueueStackPalindrome);
     }
 }
