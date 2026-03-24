@@ -1,4 +1,4 @@
-public class UseCase3PalindromeCheckerApp {
+public class UseCase4PalindromeCheckerApp {
     public static void main(String[] args) {
 
         // Display welcome message
@@ -30,15 +30,41 @@ public class UseCase3PalindromeCheckerApp {
         // UC3: Palindrome Check Using String Reverse
         String reversed = "";
 
-        // Iterate from the last character to the first
         for (int i = input.length() - 1; i >= 0; i--) {
             reversed = reversed + input.charAt(i);
         }
 
-        // Compare original and reversed using equals()
         boolean isReversePalindrome = input.equals(reversed);
 
         System.out.println("Reversed text: " + reversed);
         System.out.println("Is it a Palindrome (Reverse Check)? : " + isReversePalindrome);
+
+        // UC4: Character Array Based Palindrome Check
+        String input2 = "radar";
+
+        // Convert the string into a character array
+        char[] chars = input2.toCharArray();
+
+        // Initialize pointer at the beginning
+        int start = 0;
+
+        // Initialize pointer at the end
+        int end = chars.length - 1;
+
+        // Assume palindrome initially
+        boolean isCharPalindrome = true;
+
+        // Continue comparison until pointers cross
+        while (start < end) {
+            if (chars[start] != chars[end]) {
+                isCharPalindrome = false;
+                break;
+            }
+            start++;
+            end--;
+        }
+
+        System.out.println("Input : " + input2);
+        System.out.println("Is Palindrome? : " + isCharPalindrome);
     }
 }
