@@ -4,7 +4,7 @@ import java.util.Queue;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public class UseCase9PalindromeCheckerApp {
+public class UseCase10PalindromeCheckerApp {
     public static void main(String[] args) {
 
         // Display welcome message
@@ -160,6 +160,26 @@ public class UseCase9PalindromeCheckerApp {
 
         System.out.println("Input : " + input7);
         System.out.println("Is Palindrome? : " + isRecursivePalindrome);
+
+        // UC10: Case-Insensitive & Space-Ignored Palindrome
+        String input8 = "A man a plan a canal Panama";
+
+        // Normalize: remove spaces/symbols and convert to lowercase
+        String normalized = input8.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+
+        boolean isNormalizedPalindrome = true;
+
+        // Compare characters from both ends
+        for (int i = 0; i < normalized.length() / 2; i++) {
+            // Compare symmetric characters
+            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
+                isNormalizedPalindrome = false;
+                break;
+            }
+        }
+
+        System.out.println("Input : " + input8);
+        System.out.println("Is Palindrome? : " + isNormalizedPalindrome);
     }
 
     /**
@@ -171,15 +191,12 @@ public class UseCase9PalindromeCheckerApp {
      * @return true if palindrome, otherwise false
      */
     private static boolean check(String s, int start, int end) {
-        // Base condition: if start >= end, all characters matched
         if (start >= end) {
             return true;
         }
-        // If characters don't match, not a palindrome
         if (s.charAt(start) != s.charAt(end)) {
             return false;
         }
-        // Recursive call moving inward
         return check(s, start + 1, end - 1);
     }
 }
