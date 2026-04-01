@@ -4,7 +4,7 @@ import java.util.Queue;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public class UseCase12PalindromeCheckerApp {
+public class UseCase13PalindromeCheckerApp {
     public static void main(String[] args) {
 
         // Display welcome message
@@ -190,12 +190,31 @@ public class UseCase12PalindromeCheckerApp {
         // UC12: Strategy Pattern for Palindrome Algorithms
         String input10 = "level";
 
-        // Inject StackStrategy at runtime
         PalindromeStrategy strategy = new StackStrategy();
         boolean isStrategyPalindrome = strategy.check(input10);
 
         System.out.println("Input : " + input10);
         System.out.println("Is Palindrome? : " + isStrategyPalindrome);
+
+        // UC13: Performance Comparison
+        String input11 = "level";
+
+        // Capture execution start time
+        long startTime = System.nanoTime();
+
+        // Run the StackStrategy to check palindrome
+        PalindromeStrategy perfStrategy = new StackStrategy();
+        boolean isPerfPalindrome = perfStrategy.check(input11);
+
+        // Capture execution end time
+        long endTime = System.nanoTime();
+
+        // Calculate total execution duration
+        long executionTime = endTime - startTime;
+
+        System.out.println("Input : " + input11);
+        System.out.println("Is Palindrome? : " + isPerfPalindrome);
+        System.out.println("Execution Time : " + executionTime + " ns");
     }
 
     private static boolean check(String s, int start, int end) {
@@ -230,8 +249,6 @@ class PalindromeService {
 
 /**
  * INTERFACE - PalindromeStrategy
- * This interface defines a contract for all
- * palindrome checking algorithms.
  */
 interface PalindromeStrategy {
     boolean check(String input);
@@ -239,22 +256,17 @@ interface PalindromeStrategy {
 
 /**
  * CLASS - StackStrategy
- * This class provides a Stack based implementation
- * of the PalindromeStrategy interface.
  */
 class StackStrategy implements PalindromeStrategy {
 
     public boolean check(String input) {
 
-        // Create a stack to store characters
         java.util.Stack<Character> stack = new java.util.Stack<>();
 
-        // Push each character of the input string onto the stack
         for (char c : input.toCharArray()) {
             stack.push(c);
         }
 
-        // Compare characters by popping from the stack
         for (char c : input.toCharArray()) {
             if (c != stack.pop()) {
                 return false;
