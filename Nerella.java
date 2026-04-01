@@ -4,7 +4,7 @@ import java.util.Queue;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public class UseCase8PalindromeCheckerApp {
+public class UseCase9PalindromeCheckerApp {
     public static void main(String[] args) {
 
         // Display welcome message
@@ -135,18 +135,14 @@ public class UseCase8PalindromeCheckerApp {
         // UC8: Linked List Based Palindrome Checker
         String input6 = "level";
 
-        // Create a LinkedList to store characters
         LinkedList<Character> list = new LinkedList<>();
 
-        // Add each character to the linked list
         for (char c : input6.toCharArray()) {
             list.add(c);
         }
 
-        // Flag to track palindrome state
         boolean isLinkedListPalindrome = true;
 
-        // Compare until only one or zero elements remain
         while (list.size() > 1) {
             if (list.removeFirst() != list.removeLast()) {
                 isLinkedListPalindrome = false;
@@ -156,5 +152,34 @@ public class UseCase8PalindromeCheckerApp {
 
         System.out.println("Input : " + input6);
         System.out.println("Is Palindrome? : " + isLinkedListPalindrome);
+
+        // UC9: Recursive Palindrome Checker
+        String input7 = "madam";
+
+        boolean isRecursivePalindrome = check(input7, 0, input7.length() - 1);
+
+        System.out.println("Input : " + input7);
+        System.out.println("Is Palindrome? : " + isRecursivePalindrome);
+    }
+
+    /**
+     * Recursively checks whether a string is palindrome.
+     *
+     * @param s     Input string
+     * @param start Starting index
+     * @param end   Ending index
+     * @return true if palindrome, otherwise false
+     */
+    private static boolean check(String s, int start, int end) {
+        // Base condition: if start >= end, all characters matched
+        if (start >= end) {
+            return true;
+        }
+        // If characters don't match, not a palindrome
+        if (s.charAt(start) != s.charAt(end)) {
+            return false;
+        }
+        // Recursive call moving inward
+        return check(s, start + 1, end - 1);
     }
 }
