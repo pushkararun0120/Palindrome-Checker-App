@@ -4,7 +4,7 @@ import java.util.Queue;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public class UseCase7PalindromeCheckerApp {
+public class UseCase8PalindromeCheckerApp {
     public static void main(String[] args) {
 
         // Display welcome message
@@ -114,18 +114,14 @@ public class UseCase7PalindromeCheckerApp {
         // UC7: Deque-Based Optimized Palindrome Checker
         String input5 = "refer";
 
-        // Create a Deque to store characters
         Deque<Character> deque = new ArrayDeque<>();
 
-        // Add each character to the deque
         for (char c : input5.toCharArray()) {
             deque.addLast(c);
         }
 
-        // Flag to track palindrome result
         boolean isDequePalindrome = true;
 
-        // Continue comparison while more than one element exists
         while (deque.size() > 1) {
             if (deque.removeFirst() != deque.removeLast()) {
                 isDequePalindrome = false;
@@ -135,5 +131,30 @@ public class UseCase7PalindromeCheckerApp {
 
         System.out.println("Input : " + input5);
         System.out.println("Is Palindrome? : " + isDequePalindrome);
+
+        // UC8: Linked List Based Palindrome Checker
+        String input6 = "level";
+
+        // Create a LinkedList to store characters
+        LinkedList<Character> list = new LinkedList<>();
+
+        // Add each character to the linked list
+        for (char c : input6.toCharArray()) {
+            list.add(c);
+        }
+
+        // Flag to track palindrome state
+        boolean isLinkedListPalindrome = true;
+
+        // Compare until only one or zero elements remain
+        while (list.size() > 1) {
+            if (list.removeFirst() != list.removeLast()) {
+                isLinkedListPalindrome = false;
+                break;
+            }
+        }
+
+        System.out.println("Input : " + input6);
+        System.out.println("Is Palindrome? : " + isLinkedListPalindrome);
     }
 }
